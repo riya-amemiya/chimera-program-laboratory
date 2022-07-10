@@ -1,0 +1,11 @@
+[package]
+edition = "2018"
+name = "rust_to_py"
+version = "0.1.0"
+[lib]
+crate-type = ["cdylib"]
+name = "rs_library"
+
+[[bin]]
+name = "rs_test"
+path = "src/main.rs"

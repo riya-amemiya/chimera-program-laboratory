@@ -1,0 +1,11 @@
+/target
+Cargo.lock
+obj
+Mainapp
+*.s
+/*.cpp
+lib/cython/*.cpp
+build
+*.so
+__pycache__
+.DS_Store
