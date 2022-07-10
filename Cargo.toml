@@ -7,5 +7,5 @@ crate-type = ["cdylib"]
 name = "rs_library"
 
 [[bin]]
-name = "rs_test"
+name = "factorial"
 path = "src/main.rs"
