@@ -4,7 +4,7 @@ INCLUDE = ./lib/include
 NAME = Mainapp
 CFLAGS = -Wall -O3 -std=c++11
 SOURCES  = $(wildcard lib/cpp/*.cpp)
-OBJECTS  = $(addprefix $(OBJDIR)/, lib$(notdir $(SOURCES:.cpp=.so)))
+OBJECTS  = $(foreach SOURCE,$(SOURCES),$(OBJDIR)/lib$(notdir $(basename $(SOURCE))).so)
 RUST_DIR = target/release
 RUST = $(wildcard $(RUST_DIR)/*.dylib)
 RUST_SOURCES = $(wildcard src/*.rs)
@@ -13,8 +13,10 @@ CYTHON_SOURCES = $(wildcard lib/cython/*.pyx)
 GOLANG = $(wildcard lib/go/*.go)
 RS_CPP_HPP = $(INCLUDE)/rs.hpp
 CARGO = Cargo.toml
+ZIGSOURCES  = $(wildcard lib/zig/src/*.zig)
+ZIGOBJECTS  = $(foreach SOURCE,$(SOURCES),$(OBJDIR)/lib$(notdir $(basename $(SOURCE))).a)
 
-$(CYTHON): $(RS_CPP_HPP) $(OBJECTS) $(RUST) $(CYTHON_SOURCES)
+$(CYTHON): $(RS_CPP_HPP) $(OBJECTS) $(RUST) $(CYTHON_SOURCES) $(ZIGOBJECTS)
 	sudo CFLAGS=-stdlib=libc++ python setup.py build_ext -i
 
 $(INCLUDE)/rs.hpp: $(RUST_SOURCES)
@@ -24,10 +26,13 @@ $(INCLUDE)/rs.hpp: $(RUST_SOURCES)
 $(NAME): $(OBJECTS) $(RUST)
 	$(CXX) -o $@ $^ -g
 
+$(ZIGOBJECTS): $(ZIGSOURCES)
+	cd lib/zig && ls && zig build -Drelease-fast
+
 $(OBJDIR):
 	mkdir $(OBJDIR)
 
-$(OBJDIR)/lib%.so: $(SOURCES) $(OBJDIR)
+$(OBJECTS): $(SOURCES) $(OBJDIR)
 
 	@[ -d $(OBJDIR) ]
 	$(CXX) $(CFLAGS) -I$(INCLUDE) -c -o $@ $<
@@ -58,3 +63,8 @@ Rustbuild:
 	cargo build --release
 	cbindgen . -o lib/include/rs.hpp
 	python script/index.py
+
+.PHONY: CPPOBJECTS
+
+CPPOBJECTS:
+	echo $(OBJECTS)

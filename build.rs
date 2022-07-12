@@ -1,7 +1,11 @@
 fn main() {
-    let path = "./lib/go";
-    let lib = "go_main";
+    let paths = ["./lib/go", "./lib/zig/zig-out/lib"];
+    let libs = ["go_main", "zig"];
 
-    println!("cargo:rustc-link-search=native={}", path);
-    println!("cargo:rustc-link-lib=static={}", lib);
+    for path in paths.iter() {
+        println!("cargo:rustc-link-search={}", path);
+    }
+    for libs in libs.iter() {
+        println!("cargo:rustc-link-lib={}", libs);
+    }
 }

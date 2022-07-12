@@ -12,7 +12,7 @@ sourcesList = [
         include_dirs=['./lib/include', "./lib/go"],
         extra_compile_args=["-stdlib=libc++", "-Wdeprecated"],
         library_dirs=["./obj", "./target/release"],
-        libraries=['main', "rs_library"],
+        libraries=['cppmain', "rs_library"],
     ),
     Extension(
         name='calc_go',
@@ -22,6 +22,15 @@ sourcesList = [
         extra_compile_args=["-stdlib=libc++", "-Wdeprecated"],
         library_dirs=["./lib/go"],
         libraries=["go_main"],
+    ),
+    Extension(
+        name='calc_zig',
+        sources=["./lib/cython/call_zig.pyx"],
+        language='c++',
+        include_dirs=["./lib/zig/zig-out/lib"],
+        extra_compile_args=["-stdlib=libc++", "-Wdeprecated"],
+        library_dirs=["./lib/zig/zig-out/lib"],
+        libraries=["zig"],
     )
 ]
 

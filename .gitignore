@@ -9,3 +9,5 @@ build
 *.so
 __pycache__
 .DS_Store
+zig-cache/
+zig-out/
