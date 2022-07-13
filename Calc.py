@@ -1,6 +1,5 @@
 import calc
 import calc_go
-import calc_zig
 
 
 class Calc:
@@ -31,5 +30,5 @@ class Calc:
     def py_rs_call_zig_factorial(self, n: int) -> int:
         return calc.py_rs_call_zig_factorial(n)
 
-    def py_zig_factorial(self, n: int) -> int:
-        return calc_zig.py_zig_factorial(n)
+    def py_c_rs_call_zig_factorial(self, n: int) -> int:
+        return calc.py_c_rs_call_zig_factorial(n)

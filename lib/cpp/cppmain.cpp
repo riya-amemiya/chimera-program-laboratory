@@ -13,4 +13,5 @@ namespace cpp_main_lib
     }
     int c_rs_factorial(int x) { return rs_to_py_lib::rs_factorial(x); }
     int c_rs_call_golang_factorial(int n) { return rs_to_py_lib::rs_call_golang_factorial(n); }
+    int c_rs_call_zig_factorial(int x) { return rs_to_py_lib::rs_call_zig_factorial(x); }
 } // namespace cpp_main_lib
