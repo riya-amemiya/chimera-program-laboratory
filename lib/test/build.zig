@@ -12,6 +12,10 @@ pub fn build(b: *std.build.Builder) void {
     const mode = b.standardReleaseOptions();
 
     const exe = b.addExecutable("lib", "src/factorial.zig");
+    exe.bundle_compiler_rt = true;
+    exe.force_pic = true;
+    exe.single_threaded = true;
+    exe.strip = true;
     exe.setTarget(target);
     exe.setBuildMode(mode);
     exe.install();

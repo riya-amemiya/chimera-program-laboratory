@@ -36,6 +36,14 @@ results = {
         "averageTimes": [],
         "totalTimes": [],
     },
+    # "py_c_rs_call_golang_factorial.py": {
+    #     "averageTimes": [],
+    #     "totalTimes": [],
+    # },
+    # "py_go.py": {
+    #     "averageTimes": [],
+    #     "totalTimes": [],
+    # },
     "./target/release/factorial": {
         "averageTimes": [],
         "totalTimes": [],
@@ -52,6 +60,14 @@ results = {
         "averageTimes": [],
         "totalTimes": [],
     },
+    "./lib/js/a.out": {
+        "averageTimes": [],
+        "totalTimes": [],
+    },
+    "lib/js/factorial.js": {
+        "averageTimes": [],
+        "totalTimes": [],
+    }
 }
 
 
@@ -89,7 +105,8 @@ def main():
         "./target/release/factorial",
         "./lib/go/factorial",
         "./lib/cpp/a.out",
-        "./lib/test/zig-out/bin/lib"
+        "./lib/test/zig-out/bin/lib",
+        "./lib/js/a.out"
     ]
 
     random.shuffle(l)
@@ -107,15 +124,28 @@ def main():
         results[i]["averageTimes"].append(averageTime)
         results[i]["totalTimes"].append(totalTime)
 
-    # try:
-    #     with open("./score.csv", mode="x") as f:
-    #         f.write("name,averageTime,totalTime,count\n")
-    # except:
-    #     pass
+    l = [
+        "lib/js/factorial.js",
+    ]
+
+    random.shuffle(l)
+
+    for i in l:
+        resultTime = []
+        for _ in range(10):
+            startTime = time.time()
+            _ = subprocess.check_output(["node", i])
+            endTime = time.time() - startTime
+            resultTime.append(endTime)
+        averageTime = average(resultTime)
+        totalTime = sum(resultTime)
+        count += 1
+        results[i]["averageTimes"].append(averageTime)
+        results[i]["totalTimes"].append(totalTime)
 
 
 if __name__ == '__main__':
-    for i in range(10):
+    for i in range(1):
         main()
     for k in sorted(results, key=lambda x: results[x]["averageTimes"][0]):
         print("----------------------------------------------------")
