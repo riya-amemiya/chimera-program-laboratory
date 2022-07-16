@@ -1,3 +1,4 @@
+#[link(name = "go_main", kind = "static")]
 extern "C" {
     fn golang_factorial(n: i32) -> i32;
 }

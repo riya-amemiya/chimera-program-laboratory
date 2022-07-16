@@ -21,3 +21,4 @@ cpdef int py_rs_call_zig_factorial(int n):
 
 cpdef int py_c_rs_call_zig_factorial(int n):
     return c_rs_call_zig_factorial(n)
+#

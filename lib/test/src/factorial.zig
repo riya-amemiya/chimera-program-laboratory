@@ -10,7 +10,7 @@ const std = @import("std");
 pub fn main() anyerror!void {
     const stdout = std.io.getStdOut().writer();
     var i: i32 = 0;
-    while (i <= 100000) {
+    while (i <= 1000000) {
         try stdout.print("{}\n", .{zig_factorial(10)});
         i += 1;
     }
