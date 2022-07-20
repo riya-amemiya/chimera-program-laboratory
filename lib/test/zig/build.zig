@@ -11,16 +11,16 @@ pub fn build(b: *std.build.Builder) void {
     // between Debug, ReleaseSafe, ReleaseFast, and ReleaseSmall.
     const mode = b.standardReleaseOptions();
 
-    const exe = b.addExecutable("lib", "src/factorial.zig");
-    exe.bundle_compiler_rt = true;
-    exe.force_pic = true;
-    exe.single_threaded = true;
-    exe.strip = true;
-    exe.setTarget(target);
-    exe.setBuildMode(mode);
-    exe.install();
+    const factorial = b.addExecutable("factorial", "src/factorial.zig");
+    factorial.bundle_compiler_rt = true;
+    factorial.force_pic = true;
+    factorial.single_threaded = true;
+    factorial.strip = true;
+    factorial.setTarget(target);
+    factorial.setBuildMode(mode);
+    factorial.install();
 
-    const run_cmd = exe.run();
+    const run_cmd = factorial.run();
     run_cmd.step.dependOn(b.getInstallStep());
     if (b.args) |args| {
         run_cmd.addArgs(args);

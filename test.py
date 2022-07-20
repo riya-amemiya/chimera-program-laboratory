@@ -117,8 +117,8 @@ def main():
     l = [
         "./target/release/factorial",
         "./lib/go/factorial",
-        "./lib/cpp/a.out",
-        "./lib/test/zig-out/bin/lib",
+        "./lib/test/cpp/factorial",
+        "./lib/test/zig/zig-out/bin/factorial",
         "./lib/js/a.out"
     ]
 
