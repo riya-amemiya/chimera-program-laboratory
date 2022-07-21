@@ -9,7 +9,7 @@ int factorial(int x)
 }
 int main()
 {
-    for (int i = 0; i < 100000; i++)
+    for (int i = 0; i < 1000000; i++)
     {
         std::cout << factorial(10) << std::endl;
     }

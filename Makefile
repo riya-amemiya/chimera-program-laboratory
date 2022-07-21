@@ -2,7 +2,7 @@ CXX = g++
 OBJDIR = ./obj
 INCLUDE = ./lib/include
 NAME = Mainapp
-CFLAGS = -Wall -O3 -std=c++11
+CFLAGS = -Wall -O3 -std=c++20
 SOURCES  = $(wildcard lib/cpp/*.cpp)
 OBJECTS  = $(foreach SOURCE,$(SOURCES),$(OBJDIR)/lib$(notdir $(basename $(SOURCE))).so)
 RUST_DIR = target/release

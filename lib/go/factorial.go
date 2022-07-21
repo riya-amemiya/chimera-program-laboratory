@@ -8,7 +8,7 @@ func factorial(n int) int {
 	return n * factorial(n-1)
 }
 func main() {
-        for i := 0; i < 100000; i++ {
+        for i := 0; i < 1000000; i++ {
 				fmt.Printf("%d\n", factorial(10))
         }
 }

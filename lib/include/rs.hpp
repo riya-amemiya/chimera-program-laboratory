@@ -4,20 +4,18 @@
 #include <cstdlib>
 #include <ostream>
 #include <new>
-namespace rs_to_py_lib
-{
-    extern "C"
-    {
+namespace rs_to_py_lib {
+extern "C" {
 
-        extern int32_t golang_factorial(int32_t n);
+extern int32_t golang_factorial(int32_t n);
 
-        int32_t rs_call_golang_factorial(int32_t n);
+int32_t rs_call_golang_factorial(int32_t n);
 
-        int32_t rs_factorial(int32_t x);
+int32_t rs_factorial(int32_t x);
 
-        extern int32_t zig_factorial(int32_t x);
+extern int32_t zig_factorial(int32_t x);
 
-        int32_t rs_call_zig_factorial(int32_t x);
+int32_t rs_call_zig_factorial(int32_t x);
 
-    } // extern "C"
+} // extern "C"
 }

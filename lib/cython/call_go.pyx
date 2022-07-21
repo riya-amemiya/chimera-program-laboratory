@@ -4,3 +4,4 @@ cdef extern from "../go/libgo_main.h":
 
 cpdef int py_golang_factorial(int n):
     return golang_factorial(n)
+

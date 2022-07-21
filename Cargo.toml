@@ -2,6 +2,9 @@
 edition = "2018"
 name = "rust_to_py"
 version = "0.1.0"
+[profile.release]
+lto = true
+opt-level = 3
 [lib]
 crate-type = ["cdylib"]
 name = "rs_library"

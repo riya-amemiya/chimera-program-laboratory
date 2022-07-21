@@ -10,7 +10,6 @@ pub fn build(b: *Builder) void {
     lib.force_pic = true;
     lib.single_threaded = true;
     lib.strip = true;
-    lib.out_h_filename = "zigfactorial.h";
 
     lib.setBuildMode(mode);
     lib.install();

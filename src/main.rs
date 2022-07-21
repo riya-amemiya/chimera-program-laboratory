@@ -5,7 +5,7 @@ fn factorial(n: i64) -> i64 {
     return factorial(n - 1) * n;
 }
 fn main() {
-    for _ in 0..100000 {
+    for _ in 0..1000000 {
         println!("{}", factorial(10));
     }
 }

@@ -13,3 +13,6 @@ cdef extern from "../include/cppmain.hpp" namespace "cpp_main_lib":
 
 cdef extern from "../include/rs.hpp" namespace "rs_to_py_lib":
     cdef int rs_call_zig_factorial(int n)
+
+cdef extern from "../include/cppmain.hpp" namespace "cpp_main_lib":
+    cdef int c_rs_call_zig_factorial(int n)

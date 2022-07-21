@@ -4,5 +4,5 @@ def factorial(n):
     return n * factorial(n - 1)
 
 
-for i in range(100000):
+for i in range(1000000):
     print(factorial(10))
